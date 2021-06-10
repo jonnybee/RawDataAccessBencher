@@ -29,7 +29,7 @@ namespace RawBencher.Benchers
 		/// <returns>The fetched element, or null if not found</returns>
 		public override EF6.Bencher.EntityClasses.SalesOrderHeader FetchIndividual(int key)
 		{
-			using(var ctx = new AWDataContext())
+			using(var ctx = new AWDataContext(this.ConnectionStringToUse))
 			{
 				return ctx.SalesOrderHeaders.Single(e => e.SalesOrderId == key);
 			}
@@ -42,7 +42,7 @@ namespace RawBencher.Benchers
 		/// <returns>the set fetched</returns>
 		public override IEnumerable<EF6.Bencher.EntityClasses.SalesOrderHeader> FetchSet()
 		{
-			using(var ctx = new AWDataContext())
+			using(var ctx = new AWDataContext(this.ConnectionStringToUse))
 			{
 				return ctx.SalesOrderHeaders.ToList();
 			}
@@ -55,7 +55,7 @@ namespace RawBencher.Benchers
 		/// <returns>the graph fetched</returns>
 		public override IEnumerable<EF6.Bencher.EntityClasses.SalesOrderHeader> FetchGraph()
 		{
-			using(var ctx = new AWDataContext())
+			using(var ctx = new AWDataContext(this.ConnectionStringToUse))
 			{
 				return (from soh in ctx.SalesOrderHeaders
 					   where soh.SalesOrderId > 50000 && soh.SalesOrderId <=51000
@@ -73,7 +73,7 @@ namespace RawBencher.Benchers
 		/// <returns>the graph fetched</returns>
 		public override async Task<IEnumerable<EF6.Bencher.EntityClasses.SalesOrderHeader>> FetchGraphAsync()
 		{
-			using(var ctx = new AWDataContext())
+			using(var ctx = new AWDataContext(this.ConnectionStringToUse))
 			{
 				return await (from soh in ctx.SalesOrderHeaders
 							  where soh.SalesOrderId > 50000 && soh.SalesOrderId <= 51000
@@ -123,5 +123,13 @@ namespace RawBencher.Benchers
 		{
 			return CreateFrameworkName("Entity Framework v{0} (v{1})", typeof(System.Data.Entity.DbContext));
 		}
+
+        #region Properties
+        /// <summary>
+        /// Gets or sets the connection string to use
+        /// </summary>
+        public string ConnectionStringToUse { get; set; }
+        #endregion
+
 	}
 }

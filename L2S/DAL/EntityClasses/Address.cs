@@ -28,7 +28,7 @@ namespace L2S.Bencher.EntityClasses
 		private System.DateTime	_modifiedDate;
 		private System.String	_postalCode;
 		private System.Guid	_rowguid;
-		private Microsoft.SqlServer.Types.SqlGeography	_spatialLocation;
+		//private Microsoft.SqlServer.Types.SqlGeography	_spatialLocation;
 		private System.Int32	_stateProvinceId;
 		private EntitySet <BusinessEntityAddress> _businessEntityAddresses;
 		private EntitySet <SalesOrderHeader> _salesOrderHeaders;
@@ -54,7 +54,7 @@ namespace L2S.Bencher.EntityClasses
 		partial void OnPostalCodeChanged();
 		partial void OnRowguidChanging(System.Guid value);
 		partial void OnRowguidChanged();
-		partial void OnSpatialLocationChanging(Microsoft.SqlServer.Types.SqlGeography value);
+		//partial void OnSpatialLocationChanging(Microsoft.SqlServer.Types.SqlGeography value);
 		partial void OnSpatialLocationChanged();
 		partial void OnStateProvinceIdChanging(System.Int32 value);
 		partial void OnStateProvinceIdChanged();
@@ -266,23 +266,23 @@ namespace L2S.Bencher.EntityClasses
 			}
 		}
 
-		/// <summary>Gets or sets the SpatialLocation field. Mapped on target field 'SpatialLocation'. </summary>
-		[Column(Name="SpatialLocation", Storage="_spatialLocation", DbType="Microsoft.SqlServer.Types.SqlGeography NULL")]
-		public Microsoft.SqlServer.Types.SqlGeography SpatialLocation
-		{
-			get	{ return _spatialLocation; }
-			set
-			{
-				if((_spatialLocation != value))
-				{
-					OnSpatialLocationChanging(value);
-					SendPropertyChanging("SpatialLocation");
-					_spatialLocation = value;
-					SendPropertyChanged("SpatialLocation");
-					OnSpatialLocationChanged();
-				}
-			}
-		}
+		///// <summary>Gets or sets the SpatialLocation field. Mapped on target field 'SpatialLocation'. </summary>
+		//[Column(Name="SpatialLocation", Storage="_spatialLocation", DbType="Microsoft.SqlServer.Types.SqlGeography NULL")]
+		//public Microsoft.SqlServer.Types.SqlGeography SpatialLocation
+		//{
+		//	get	{ return _spatialLocation; }
+		//	set
+		//	{
+		//		if((_spatialLocation != value))
+		//		{
+		//			OnSpatialLocationChanging(value);
+		//			SendPropertyChanging("SpatialLocation");
+		//			_spatialLocation = value;
+		//			SendPropertyChanged("SpatialLocation");
+		//			OnSpatialLocationChanged();
+		//		}
+		//	}
+		//}
 
 		/// <summary>Gets or sets the StateProvinceId field. Mapped on target field 'StateProvinceID'. </summary>
 		[Column(Name="StateProvinceID", Storage="_stateProvinceId", CanBeNull=false, DbType="int NOT NULL")]

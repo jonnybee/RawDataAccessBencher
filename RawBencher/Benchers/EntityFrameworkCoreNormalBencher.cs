@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using EFCore.Bencher;
 using EFCore.Bencher.EntityClasses;
@@ -30,7 +29,7 @@ namespace RawBencher.Benchers
 		/// <returns>The fetched element, or null if not found</returns>
 		public override EFCore.Bencher.EntityClasses.SalesOrderHeader FetchIndividual(int key)
 		{
-			using(var ctx = new AWDataContext(this.ConnectionStringToUse))
+			using(var ctx = new EFCore.Bencher.AWDataContext(this.ConnectionStringToUse))
 			{
 				return ctx.SalesOrderHeaders.Single(e => e.SalesOrderId == key);
 			}
@@ -43,7 +42,7 @@ namespace RawBencher.Benchers
 		/// <returns>the set fetched</returns>
 		public override IEnumerable<EFCore.Bencher.EntityClasses.SalesOrderHeader> FetchSet()
 		{
-			using (var ctx = new AWDataContext(this.ConnectionStringToUse))
+			using (var ctx = new EFCore.Bencher.AWDataContext(this.ConnectionStringToUse))
 			{
 				return ctx.SalesOrderHeaders.ToList();
 			}
@@ -57,10 +56,10 @@ namespace RawBencher.Benchers
 		/// <returns>the graph fetched</returns>
 		public override IEnumerable<EFCore.Bencher.EntityClasses.SalesOrderHeader> FetchGraph()
 		{
-			using(var ctx = new AWDataContext(this.ConnectionStringToUse))
+			using(var ctx = new EFCore.Bencher.AWDataContext(this.ConnectionStringToUse))
 			{
-				return (from soh in ctx.SalesOrderHeaders
-						where soh.SalesOrderId > 50000 && soh.SalesOrderId <= 51000
+				return (from soh in ctx.SalesOrderHeaders.AsQueryable()
+                        where soh.SalesOrderId > 50000 && soh.SalesOrderId <= 51000
 						select soh)
 							.Include(x => x.SalesOrderDetails)
 							.Include(x => x.Customer)
@@ -75,11 +74,11 @@ namespace RawBencher.Benchers
 		/// <returns>the graph fetched</returns>
 		public override async Task<IEnumerable<EFCore.Bencher.EntityClasses.SalesOrderHeader>> FetchGraphAsync()
 		{
-			using(var ctx = new AWDataContext(this.ConnectionStringToUse))
+			using(var ctx = new EFCore.Bencher.AWDataContext(this.ConnectionStringToUse))
 			{
-				return await (from soh in ctx.SalesOrderHeaders
-							  where soh.SalesOrderId > 50000 && soh.SalesOrderId <= 51000
-							  select soh)
+				return await ctx.SalesOrderHeaders.AsQueryable()
+                    .Where(soh =>  soh.SalesOrderId > 50000 && soh.SalesOrderId <= 51000)
+                    .Select(p => p)
 					.Include(x=>x.SalesOrderDetails)
 					.Include(x=>x.Customer)
 					.ToListAsync();
@@ -138,7 +137,7 @@ namespace RawBencher.Benchers
 		{
 			using(var ctx = new AWDataContext(this.ConnectionStringToUse))
 			{
-				return ctx.CreditCards.Where(c => c.CreditCardId > 19237).ToList();
+				return ctx.CreditCards.AsQueryable().Where(c => c.CreditCardId > 19237).ToList();
 			}
 		}
 

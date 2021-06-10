@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6B9C5DBA-FDC7-421D-8296-6CD594A2FFE9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EF6.Bencher.Net</RootNamespace>
+    <AssemblyName>EF6.Bencher.Net</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\EF6.Bencher\AwDataContext.cs">
+      <Link>AwDataContext.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Address.cs">
+      <Link>EntityClasses\Address.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\AddressType.cs">
+      <Link>EntityClasses\AddressType.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\BillOfMaterial.cs">
+      <Link>EntityClasses\BillOfMaterial.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\BusinessEntity.cs">
+      <Link>EntityClasses\BusinessEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\BusinessEntityAddress.cs">
+      <Link>EntityClasses\BusinessEntityAddress.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\BusinessEntityContact.cs">
+      <Link>EntityClasses\BusinessEntityContact.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ContactType.cs">
+      <Link>EntityClasses\ContactType.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\CountryRegion.cs">
+      <Link>EntityClasses\CountryRegion.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\CountryRegionCurrency.cs">
+      <Link>EntityClasses\CountryRegionCurrency.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\CreditCard.cs">
+      <Link>EntityClasses\CreditCard.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Culture.cs">
+      <Link>EntityClasses\Culture.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Currency.cs">
+      <Link>EntityClasses\Currency.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\CurrencyRate.cs">
+      <Link>EntityClasses\CurrencyRate.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Customer.cs">
+      <Link>EntityClasses\Customer.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Department.cs">
+      <Link>EntityClasses\Department.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\EmailAddress.cs">
+      <Link>EntityClasses\EmailAddress.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Employee.cs">
+      <Link>EntityClasses\Employee.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\EmployeeDepartmentHistory.cs">
+      <Link>EntityClasses\EmployeeDepartmentHistory.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\EmployeePayHistory.cs">
+      <Link>EntityClasses\EmployeePayHistory.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Illustration.cs">
+      <Link>EntityClasses\Illustration.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\JobCandidate.cs">
+      <Link>EntityClasses\JobCandidate.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Location.cs">
+      <Link>EntityClasses\Location.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Password.cs">
+      <Link>EntityClasses\Password.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Person.cs">
+      <Link>EntityClasses\Person.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\PersonCreditCard.cs">
+      <Link>EntityClasses\PersonCreditCard.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\PersonPhone.cs">
+      <Link>EntityClasses\PersonPhone.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\PhoneNumberType.cs">
+      <Link>EntityClasses\PhoneNumberType.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Product.cs">
+      <Link>EntityClasses\Product.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductCategory.cs">
+      <Link>EntityClasses\ProductCategory.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductCostHistory.cs">
+      <Link>EntityClasses\ProductCostHistory.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductDescription.cs">
+      <Link>EntityClasses\ProductDescription.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductDocument.cs">
+      <Link>EntityClasses\ProductDocument.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductInventory.cs">
+      <Link>EntityClasses\ProductInventory.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductListPriceHistory.cs">
+      <Link>EntityClasses\ProductListPriceHistory.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductModel.cs">
+      <Link>EntityClasses\ProductModel.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductModelIllustration.cs">
+      <Link>EntityClasses\ProductModelIllustration.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductModelProductDescriptionCulture.cs">
+      <Link>EntityClasses\ProductModelProductDescriptionCulture.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductPhoto.cs">
+      <Link>EntityClasses\ProductPhoto.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductProductPhoto.cs">
+      <Link>EntityClasses\ProductProductPhoto.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductReview.cs">
+      <Link>EntityClasses\ProductReview.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductSubcategory.cs">
+      <Link>EntityClasses\ProductSubcategory.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ProductVendor.cs">
+      <Link>EntityClasses\ProductVendor.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\PurchaseOrderDetail.cs">
+      <Link>EntityClasses\PurchaseOrderDetail.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\PurchaseOrderHeader.cs">
+      <Link>EntityClasses\PurchaseOrderHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\SalesOrderDetail.cs">
+      <Link>EntityClasses\SalesOrderDetail.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\SalesOrderHeader.cs">
+      <Link>EntityClasses\SalesOrderHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\SalesOrderHeaderSalesReason.cs">
+      <Link>EntityClasses\SalesOrderHeaderSalesReason.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\SalesPerson.cs">
+      <Link>EntityClasses\SalesPerson.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\SalesPersonQuotaHistory.cs">
+      <Link>EntityClasses\SalesPersonQuotaHistory.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\SalesReason.cs">
+      <Link>EntityClasses\SalesReason.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\SalesTaxRate.cs">
+      <Link>EntityClasses\SalesTaxRate.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\SalesTerritory.cs">
+      <Link>EntityClasses\SalesTerritory.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\SalesTerritoryHistory.cs">
+      <Link>EntityClasses\SalesTerritoryHistory.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ScrapReason.cs">
+      <Link>EntityClasses\ScrapReason.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Shift.cs">
+      <Link>EntityClasses\Shift.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ShipMethod.cs">
+      <Link>EntityClasses\ShipMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\ShoppingCartItem.cs">
+      <Link>EntityClasses\ShoppingCartItem.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\SpecialOffer.cs">
+      <Link>EntityClasses\SpecialOffer.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\SpecialOfferProduct.cs">
+      <Link>EntityClasses\SpecialOfferProduct.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\StateProvince.cs">
+      <Link>EntityClasses\StateProvince.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Store.cs">
+      <Link>EntityClasses\Store.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\TransactionHistory.cs">
+      <Link>EntityClasses\TransactionHistory.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\TransactionHistoryArchive.cs">
+      <Link>EntityClasses\TransactionHistoryArchive.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\UnitMeasure.cs">
+      <Link>EntityClasses\UnitMeasure.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\Vendor.cs">
+      <Link>EntityClasses\Vendor.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\WorkOrder.cs">
+      <Link>EntityClasses\WorkOrder.cs</Link>
+    </Compile>
+    <Compile Include="..\EF6.Bencher\EntityClasses\WorkOrderRouting.cs">
+      <Link>EntityClasses\WorkOrderRouting.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

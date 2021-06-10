@@ -28,7 +28,7 @@ namespace RawBencher.Benchers
 		/// <returns>The fetched element, or null if not found</returns>
 		public override L2S.Bencher.EntityClasses.SalesOrderHeader FetchIndividual(int key)
 		{
-			using(var ctx = new L2SBencherDataContext())
+			using(var ctx = new L2SBencherDataContext(ConnectionStringToUse))
 			{
 				ctx.ObjectTrackingEnabled = false;
 				return ctx.SalesOrderHeaders.FirstOrDefault(e => e.SalesOrderId == key);
@@ -42,7 +42,7 @@ namespace RawBencher.Benchers
 		/// <returns>the set fetched</returns>
 		public override IEnumerable<L2S.Bencher.EntityClasses.SalesOrderHeader> FetchSet()
 		{
-			using(var ctx = new L2SBencherDataContext())
+			using(var ctx = new L2SBencherDataContext(ConnectionStringToUse))
 			{
 				ctx.ObjectTrackingEnabled = false;
 				return ctx.SalesOrderHeaders.ToList();
@@ -59,5 +59,13 @@ namespace RawBencher.Benchers
 		{
 			return CreateFrameworkName("Linq to Sql v{0} (v{1})", typeof(System.Data.Linq.DataContext));
 		}
+
+		#region Properties
+		/// <summary>
+		/// Gets or sets the connection string to use
+		/// </summary>
+		public string ConnectionStringToUse { get; set; }
+		#endregion
+
 	}
 }

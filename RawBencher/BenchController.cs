@@ -13,7 +13,7 @@ using System.Linq;
 using System.Threading;
 using Dapper;
 #if NETCOREAPP
-using Microsoft.Extensions.PlatformAbstractions;
+//using Microsoft.Extensions.PlatformAbstractions;
 #endif
 using RawBencher.Benchers;
 using SD.LLBLGen.Pro.ORMSupportClasses;
@@ -39,7 +39,7 @@ namespace RawBencher
 		private const bool ApplyAntiFloodForVMUsage = false; // set to true if your target DB server is hosted on a VM, otherwise set it to false. Used in individual fetch bench.
 
 #if NETCOREAPP
-		private static string ConnectionString = @"data source=ATHENA\SQLEXPRESS2017;initial catalog=AdventureWorks;integrated security=SSPI;persist security info=False;packet size=4096";
+		private static string ConnectionString = @"data source=(localdb)\mssqllocaldb;initial catalog=AdventureWorks;integrated security=SSPI;persist security info=False;packet size=4096";
 #else
 		private static string ConnectionString = ConfigurationManager.ConnectionStrings["AdventureWorks.ConnectionString.SQL Server (SqlClient)"].ConnectionString;
 #endif
@@ -67,34 +67,38 @@ namespace RawBencher
 			RegisteredBenchers.Add(new RawDbDataReaderBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new NPocoBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new LINQ2DBNormalBencher(ConnectionString));
-			RegisteredBenchers.Add(new LLBLGenProNoChangeTrackingRawSQLPocoBencher(ConnectionString) { CommandText = SqlSelectCommandText });
-			RegisteredBenchers.Add(new LLBLGenProNoChangeTrackingQuerySpecPocoBencher(ConnectionString));
-			RegisteredBenchers.Add(new LLBLGenProNoChangeTrackingLinqPocoBencher(ConnectionString));
-			RegisteredBenchers.Add(new LLBLGenProNoChangeTrackingBencher(ConnectionString));
-			RegisteredBenchers.Add(new LLBLGenProResultsetCachingBencher(ConnectionString));
-			RegisteredBenchers.Add(new LLBLGenProNormalBencher(ConnectionString));
-			RegisteredBenchers.Add(new LLBLGenProDTOBencher(ConnectionString));
+			//RegisteredBenchers.Add(new LLBLGenProNoChangeTrackingRawSQLPocoBencher(ConnectionString) { CommandText = SqlSelectCommandText });
+			//RegisteredBenchers.Add(new LLBLGenProNoChangeTrackingQuerySpecPocoBencher(ConnectionString));
+			//RegisteredBenchers.Add(new LLBLGenProNoChangeTrackingLinqPocoBencher(ConnectionString));
+			//RegisteredBenchers.Add(new LLBLGenProNoChangeTrackingBencher(ConnectionString));
+			//RegisteredBenchers.Add(new LLBLGenProResultsetCachingBencher(ConnectionString));
+			//RegisteredBenchers.Add(new LLBLGenProNormalBencher(ConnectionString));
+			//RegisteredBenchers.Add(new LLBLGenProDTOBencher(ConnectionString));
 			RegisteredBenchers.Add(new DapperBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
-			RegisteredBenchers.Add(new ChainBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
-			RegisteredBenchers.Add(new OrmLiteBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
+			//RegisteredBenchers.Add(new ChainBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
+            RegisteredBenchers.Add(new OrmLiteBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new DataTableBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
-			RegisteredBenchers.Add(new ChainCompiledBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
+			//RegisteredBenchers.Add(new ChainCompiledBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
+
+			RegisteredBenchers.Add(new EntityFrameworkCoreNoChangeTrackingBencher() { ConnectionStringToUse = ConnectionString });
+			RegisteredBenchers.Add(new EntityFrameworkCoreNormalBencher() { ConnectionStringToUse = ConnectionString });
+
 
 #if NETCOREAPP
 			// EF Core 3.x does support netstandard 2.0 but the benchers fail to build on .NET 4.8 so we'll skip them on netfx
-			RegisteredBenchers.Add(new EntityFrameworkCoreNoChangeTrackingBencher() { ConnectionStringToUse = ConnectionString });
-			RegisteredBenchers.Add(new EntityFrameworkCoreNormalBencher() { ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new EntityFrameworkCoreDTOBencher() { ConnectionStringToUse = ConnectionString });
 #else
-			RegisteredBenchers.Add(new MassiveBencher());
+			//RegisteredBenchers.Add(new MassiveBencher());
 			RegisteredBenchers.Add(new NHibernateNormalBencher());
-			RegisteredBenchers.Add(new LinqToSqlNoChangeTrackingBencher());
-			RegisteredBenchers.Add(new LinqToSqlNormalBencher());
-			RegisteredBenchers.Add(new EntityFrameworkNoChangeTrackingBencher());
-			RegisteredBenchers.Add(new EntityFrameworkNormalBencher());
 			RegisteredBenchers.Add(new PetaPocoBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new PetaPocoFastBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 #endif
+
+            RegisteredBenchers.Add(new LinqToSqlNoChangeTrackingBencher() { ConnectionStringToUse = ConnectionString });
+            RegisteredBenchers.Add(new LinqToSqlNormalBencher() { ConnectionStringToUse = ConnectionString });
+            RegisteredBenchers.Add(new EntityFrameworkNoChangeTrackingBencher(){ConnectionStringToUse = ConnectionString});
+            RegisteredBenchers.Add(new EntityFrameworkNormalBencher() { ConnectionStringToUse = ConnectionString });
+
 			BenchController.DisplayHeader();
 			BenchController.WarmupDB();
 			BenchController.FetchKeysForIndividualFetches();
@@ -139,8 +143,8 @@ namespace RawBencher
 			Console.WriteLine("| Bencher runs as 64bit          : {0}", Environment.Is64BitProcess);
 #if NETCOREAPP	
 			Console.WriteLine("| .NET Type                      : .NET Core");
-			Console.WriteLine("| CLR version                    : {0} {1}", PlatformServices.Default.Application.RuntimeFramework.Identifier, 
-																			PlatformServices.Default.Application.RuntimeFramework.Version);
+			//Console.WriteLine("| CLR version                    : {0} {1}", PlatformServices.Default.Application.RuntimeFramework.Identifier, 
+			//																PlatformServices.Default.Application.RuntimeFramework.Version);
 #else
 			Console.WriteLine("| .NET Type                      : .NET Full");
 			Console.WriteLine("| CLR version                    : {0}", Environment.Version);

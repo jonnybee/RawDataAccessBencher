@@ -1,0 +1,93 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\L2S\DAL\EntityClasses\Address.cs" Link="EntityClasses\Address.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\AddressType.cs" Link="EntityClasses\AddressType.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\BillOfMaterial.cs" Link="EntityClasses\BillOfMaterial.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\BusinessEntity.cs" Link="EntityClasses\BusinessEntity.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\BusinessEntityAddress.cs" Link="EntityClasses\BusinessEntityAddress.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\BusinessEntityContact.cs" Link="EntityClasses\BusinessEntityContact.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ContactType.cs" Link="EntityClasses\ContactType.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\CountryRegion.cs" Link="EntityClasses\CountryRegion.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\CountryRegionCurrency.cs" Link="EntityClasses\CountryRegionCurrency.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\CreditCard.cs" Link="EntityClasses\CreditCard.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Culture.cs" Link="EntityClasses\Culture.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Currency.cs" Link="EntityClasses\Currency.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\CurrencyRate.cs" Link="EntityClasses\CurrencyRate.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Customer.cs" Link="EntityClasses\Customer.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Department.cs" Link="EntityClasses\Department.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Document.cs" Link="EntityClasses\Document.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\EmailAddress.cs" Link="EntityClasses\EmailAddress.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Employee.cs" Link="EntityClasses\Employee.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\EmployeeDepartmentHistory.cs" Link="EntityClasses\EmployeeDepartmentHistory.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\EmployeePayHistory.cs" Link="EntityClasses\EmployeePayHistory.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Illustration.cs" Link="EntityClasses\Illustration.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\JobCandidate.cs" Link="EntityClasses\JobCandidate.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Location.cs" Link="EntityClasses\Location.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Password.cs" Link="EntityClasses\Password.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Person.cs" Link="EntityClasses\Person.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\PersonCreditCard.cs" Link="EntityClasses\PersonCreditCard.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\PersonPhone.cs" Link="EntityClasses\PersonPhone.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\PhoneNumberType.cs" Link="EntityClasses\PhoneNumberType.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Product.cs" Link="EntityClasses\Product.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductCategory.cs" Link="EntityClasses\ProductCategory.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductCostHistory.cs" Link="EntityClasses\ProductCostHistory.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductDescription.cs" Link="EntityClasses\ProductDescription.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductDocument.cs" Link="EntityClasses\ProductDocument.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductInventory.cs" Link="EntityClasses\ProductInventory.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductListPriceHistory.cs" Link="EntityClasses\ProductListPriceHistory.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductModel.cs" Link="EntityClasses\ProductModel.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductModelIllustration.cs" Link="EntityClasses\ProductModelIllustration.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductModelProductDescriptionCulture.cs" Link="EntityClasses\ProductModelProductDescriptionCulture.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductPhoto.cs" Link="EntityClasses\ProductPhoto.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductProductPhoto.cs" Link="EntityClasses\ProductProductPhoto.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductReview.cs" Link="EntityClasses\ProductReview.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductSubcategory.cs" Link="EntityClasses\ProductSubcategory.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ProductVendor.cs" Link="EntityClasses\ProductVendor.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\PurchaseOrderDetail.cs" Link="EntityClasses\PurchaseOrderDetail.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\PurchaseOrderHeader.cs" Link="EntityClasses\PurchaseOrderHeader.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\SalesOrderDetail.cs" Link="EntityClasses\SalesOrderDetail.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\SalesOrderHeader.cs" Link="EntityClasses\SalesOrderHeader.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\SalesOrderHeaderSalesReason.cs" Link="EntityClasses\SalesOrderHeaderSalesReason.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\SalesPerson.cs" Link="EntityClasses\SalesPerson.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\SalesPersonQuotaHistory.cs" Link="EntityClasses\SalesPersonQuotaHistory.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\SalesReason.cs" Link="EntityClasses\SalesReason.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\SalesTaxRate.cs" Link="EntityClasses\SalesTaxRate.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\SalesTerritory.cs" Link="EntityClasses\SalesTerritory.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\SalesTerritoryHistory.cs" Link="EntityClasses\SalesTerritoryHistory.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ScrapReason.cs" Link="EntityClasses\ScrapReason.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Shift.cs" Link="EntityClasses\Shift.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ShipMethod.cs" Link="EntityClasses\ShipMethod.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\ShoppingCartItem.cs" Link="EntityClasses\ShoppingCartItem.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\SpecialOffer.cs" Link="EntityClasses\SpecialOffer.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\SpecialOfferProduct.cs" Link="EntityClasses\SpecialOfferProduct.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\StateProvince.cs" Link="EntityClasses\StateProvince.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Store.cs" Link="EntityClasses\Store.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\TransactionHistory.cs" Link="EntityClasses\TransactionHistory.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\TransactionHistoryArchive.cs" Link="EntityClasses\TransactionHistoryArchive.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\UnitMeasure.cs" Link="EntityClasses\UnitMeasure.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\Vendor.cs" Link="EntityClasses\Vendor.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\WorkOrder.cs" Link="EntityClasses\WorkOrder.cs" />
+    <Compile Include="..\L2S\DAL\EntityClasses\WorkOrderRouting.cs" Link="EntityClasses\WorkOrderRouting.cs" />
+    <Compile Include="..\L2S\DAL\L2SBencherDataContext.cs" Link="L2SBencherDataContext.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="EntityClasses\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SD.Tools.LinqToSQL2">
+      <HintPath>..\ReferencedAssemblies\netstandard2.0\SD.Tools.LinqToSQL2.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

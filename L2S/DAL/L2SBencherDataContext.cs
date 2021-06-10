@@ -6,10 +6,8 @@ using System.Data;
 using System.Data.Common;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Reflection;
 using L2S.Bencher.EntityClasses;
 
 namespace L2S.Bencher
@@ -24,21 +22,6 @@ namespace L2S.Bencher
 		#region Extensibility Method Definitions
 		partial void OnCreated();
 		#endregion
-		
-		/// <summary>Initializes a new instance of the <see cref="L2SBencherDataContext"/> class.</summary>
-		public L2SBencherDataContext() :
-			base(ConfigurationManager.ConnectionStrings["AdventureWorks.ConnectionString.SQL Server (SqlClient)"].ConnectionString, _mappingSource)
-		{
-			OnCreated();
-		}
-
-		/// <summary>Initializes a new instance of the <see cref="L2SBencherDataContext"/> class.</summary>
-		/// <param name="mappingSource">The mapping source.</param>
-		public L2SBencherDataContext(System.Data.Linq.Mapping.MappingSource mappingSource) :
-			base(ConfigurationManager.ConnectionStrings["AdventureWorks.ConnectionString.SQL Server (SqlClient)"].ConnectionString, mappingSource)
-		{
-			OnCreated();
-		}
 		
 		/// <summary>Initializes a new instance of the <see cref="L2SBencherDataContext"/> class.</summary>
 		/// <param name="connection">The connection.</param>
