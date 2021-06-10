@@ -484,6 +484,7 @@
     <Compile Include="Benchers\BencherBase.cs" />
     <Compile Include="Benchers\ChainCompiledBencher.cs" />
     <Compile Include="Benchers\ChainBencher.cs" />
+    <Compile Include="Benchers\EntityFrameworkCoreDTOBencher.cs" />
     <Compile Include="Benchers\EntityFrameworkCoreNoChangeTrackingBencher.cs" />
     <Compile Include="Benchers\EntityFrameworkCoreNormalBencher.cs" />
     <Compile Include="Benchers\FetchOnlyBencherBase.cs" />
@@ -536,6 +537,14 @@
     <ProjectReference Include="..\EF6.Bencher.Net\EF6.Bencher.Net.csproj">
       <Project>{6b9c5dba-fdc7-421d-8296-6cd594a2ffe9}</Project>
       <Name>EF6.Bencher.Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EFCore\EFCore.Dtos.Persistence\EFCore.Dtos.Persistence.csproj">
+      <Project>{cb888809-1c36-460c-8f0c-55929653bc92}</Project>
+      <Name>EFCore.Dtos.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EFCore\EFCore.Dtos\EFCore.Dtos.csproj">
+      <Project>{cd87ceb1-0038-48c4-ab2b-ec3c39f9f56b}</Project>
+      <Name>EFCore.Dtos</Name>
     </ProjectReference>
     <ProjectReference Include="..\EFCore\Model\EFCore.Bencher.Model.csproj">
       <Project>{28a31c35-2bd2-4b82-9a61-8a11f5d3ecf1}</Project>
