@@ -26,14 +26,12 @@ namespace EFCore.Bencher
 		/// <inheritdoc/>
 		public override int SaveChanges(bool acceptAllChangesOnSuccess)
 		{
-			CheckReadonlyEntities();
 			return base.SaveChanges(acceptAllChangesOnSuccess);
 		}
 
 		/// <inheritdoc/>
 		public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new CancellationToken())
 		{
-			CheckReadonlyEntities();
 			return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
 		}
 		
@@ -42,15 +40,6 @@ namespace EFCore.Bencher
 		{
 			new AWModelBuilder().BuildModel(modelBuilder);
 			OnModelCreatingComplete();
-		}
-
-		private void CheckReadonlyEntities()
-		{
-			var namesOfChangedReadOnlyEntities = this.ChangeTracker.Entries().Where(e => e.Metadata.IsReadOnly() && e.State != EntityState.Unchanged).Select(e => e.Metadata.Name).Distinct().ToList();
-			if(namesOfChangedReadOnlyEntities.Any())
-			{
-				throw new InvalidOperationException($"Attempted to save the following read-only entitie(s): {string.Join(",", namesOfChangedReadOnlyEntities)}");
-			}
 		}
 
 		/// <summary>Gets an object query for the entity set 'Address', containing entity type 'Address'</summary>

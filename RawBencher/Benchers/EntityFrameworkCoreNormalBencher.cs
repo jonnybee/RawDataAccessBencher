@@ -63,6 +63,9 @@ namespace RawBencher.Benchers
 						select soh)
 							.Include(x => x.SalesOrderDetails)
 							.Include(x => x.Customer)
+#if NET5_0
+                            .AsSplitQuery()
+#endif
 							.ToList();
 			}
 		}
@@ -81,7 +84,10 @@ namespace RawBencher.Benchers
                     .Select(p => p)
 					.Include(x=>x.SalesOrderDetails)
 					.Include(x=>x.Customer)
-					.ToListAsync();
+#if NET5_0
+                    .AsSplitQuery()
+#endif
+                    .ToListAsync();
 			}
 		}
 

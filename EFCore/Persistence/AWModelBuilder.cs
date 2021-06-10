@@ -1185,33 +1185,5 @@ namespace EFCore.Bencher
 			config.HasOne(t => t.WorkOrder).WithMany(t => t.WorkOrderRoutings).HasForeignKey(t => t.WorkOrderId);
 		}
 	}
-
-
-	/// <summary>Extensions class for extension methods used in the model builder code</summary>
-	internal static partial class AWModelBuilderExtensions
-	{
-		private static readonly string READONLY_ANNOTATION = "custom:readonly";
-
-		/// <summary>Extension method which is used by the context class to determine whether an entity is readonly</summary>
-		/// <typeparam name="TEntity">The type of the entity.</typeparam>
-		/// <param name="builder">The entity type builder object to augment.</param>
-		/// <returns>the passed in entity type builder</returns>
-		internal static EntityTypeBuilder<TEntity> IsReadOnly<TEntity>(this EntityTypeBuilder<TEntity> builder)
-			where TEntity : class
-		{
-			builder.HasAnnotation(READONLY_ANNOTATION, true);
-			return builder;
-		}
-		
-		/// <summary>Determines whether the passed in entity type has the readonly annotation set.
-		/// </summary>
-		/// <param name="entity">The entity type to check.</param>
-		/// <returns>true if the entity type is marked as read-only, false otherwise</returns>
-		public static bool IsReadOnly(this IEntityType entity)
-		{
-			var annotation = entity.FindAnnotation(READONLY_ANNOTATION);
-			return annotation != null && (bool)annotation.Value;
-		}
-	}
 }
 
