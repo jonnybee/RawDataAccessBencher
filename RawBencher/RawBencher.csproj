@@ -103,7 +103,6 @@
     <Compile Include="Benchers\NHibernateNormalBencher.cs" />
     <Compile Include="Benchers\LinqToSqlNoChangeTrackingBencher.cs" />
     <Compile Include="Benchers\LinqToSqlNormalBencher.cs" />
-    <Compile Include="Benchers\EntityFrameworkNoChangeTrackingBencher.cs" />
     <Compile Include="Benchers\EntityFrameworkNormalBencher.cs" />
     <Compile Include="Benchers\DapperBencher.cs" />
     <Compile Include="Benchers\DataTableBencher.cs" />

@@ -16,20 +16,22 @@ namespace RawBencher.Benchers
 	public class EntityFrameworkCoreDTOBencher : FetchOnlyBencherBase<SalesOrderHeaderDto>
 	{
 		private readonly PooledDbContextFactory<AWDataContext> pooledDbContextFactory;
+        private readonly bool enableThreadSafetyChecks;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="EntityFrameworkCoreDTOBencher"/> class.
-		/// </summary>
-		public EntityFrameworkCoreDTOBencher(string connectionString)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EntityFrameworkCoreDTOBencher"/> class.
+        /// </summary>
+        public EntityFrameworkCoreDTOBencher(string connectionString, bool enableThreadSafetyChecks = false)
 			: base(e => e.SalesOrderId, usesChangeTracking:false, usesCaching:false, supportsAsync:true, supportsEagerLoading:true, supportsIndividualFetch:false, supportsSetFetch:false)
 		{
 			var options = new DbContextOptionsBuilder<AWDataContext>()
 				.UseSqlServer(connectionString)
-				.EnableThreadSafetyChecks(false)
+				.EnableThreadSafetyChecks(enableThreadSafetyChecks)
 				.Options;
 
 			pooledDbContextFactory = new PooledDbContextFactory<AWDataContext>(options);
-		}
+            this.enableThreadSafetyChecks = enableThreadSafetyChecks;
+        }
 
 		
 		/// <summary>
@@ -97,7 +99,10 @@ namespace RawBencher.Benchers
 		/// <returns>the framework name.</returns>
 		protected override string CreateFrameworkNameImpl()
 		{
-			return CreateFrameworkName("Entity Framework Core v{0} (v{1}) Poco DTO Graph", typeof(Microsoft.EntityFrameworkCore.DbContext));
+			if (enableThreadSafetyChecks)
+				return CreateFrameworkName("EFCore v{0} Poco DTO Graph", typeof(Microsoft.EntityFrameworkCore.DbContext));
+			else 
+				return CreateFrameworkName("EFCore v{0} NTSC Poco DTO Graph", typeof(Microsoft.EntityFrameworkCore.DbContext));
 		}
 	}
 }

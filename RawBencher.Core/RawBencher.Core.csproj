@@ -12,11 +12,14 @@
       <Compile Include="..\RawBencher\Benchers\ChainBencher.cs" Link="Benchers\ChainBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\DapperBencher.cs" Link="Benchers\DapperBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\DataTableBencher.cs" Link="Benchers\DataTableBencher.cs" />
-      <Compile Include="..\RawBencher\Benchers\EntityFrameworkCoreNoChangeTrackingBencher.cs" Link="Benchers\EntityFrameworkCoreNoChangeTrackingBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\EntityFrameworkCoreNormalBencher.cs" Link="Benchers\EntityFrameworkCoreNormalBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\EntityFrameworkCoreDTOBencher.cs" Link="Benchers\EntityFrameworkCoreDTOBencher.cs" />
-      <Compile Include="..\RawBencher\Benchers\EntityFrameworkCoreNoChangeTrackingCompiledQueryBencher.cs" Link="Benchers\EntityFrameworkCoreNoChangeTrackingCompiledQueryBencher.cs" />
-      <Compile Include="..\RawBencher\Benchers\EntityFrameworkNoChangeTrackingBencher.cs" Link="Benchers\EntityFrameworkNoChangeTrackingBencher.cs" />
+      <Compile Include="..\RawBencher\Benchers\EntityFrameworkCoreNoChangeTrackingBencher.cs" Link="Benchers\EntityFrameworkCoreNoChangeTrackingBencher.cs" />
+      <Compile Include="..\RawBencher\Benchers\EntityFrameworkCoreNoChangeTrackingWithIdentityResolutionBencher.cs" Link="Benchers\EntityFrameworkCoreNoChangeTrackingWithIdentityResolutionBencher.cs" />
+      <Compile Include="..\RawBencher\Benchers\EntityFrameworkCoreCompiledQueryBencher.cs" Link="Benchers\EntityFrameworkCoreCompiledQueryBencher.cs" />
+      <Compile Include="..\RawBencher\Benchers\EntityFrameworkCoreCompiledQueryAsNoTrackingBencher.cs" Link="Benchers\EntityFrameworkCoreCompiledQueryAsNoTrackingBencher.cs" />
+      <Compile Include="..\RawBencher\Benchers\EntityFrameworkCoreCompiledQueryAsNoTrackingWithIdentityResolutionBencher.cs" Link="Benchers\EntityFrameworkCoreCompiledQueryAsNoTrackingWithIdentityResolutionBencher.cs" />
+      <Compile Include="..\RawBencher\Benchers\EntityFrameworkCoreCompiledQueryToListBencher.cs" Link="Benchers\EntityFrameworkCoreCompiledQueryToListBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\EntityFrameworkNormalBencher.cs" Link="Benchers\EntityFrameworkNormalBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\FetchOnlyBencherBase.cs" Link="Benchers\FetchOnlyBencherBase.cs" />
       <Compile Include="..\RawBencher\Benchers\HandCodedBencher.cs" Link="Benchers\HandCodedBencher.cs" />

@@ -12,19 +12,21 @@ namespace RawBencher.Benchers
     public class EntityFrameworkCoreNoChangeTrackingBencher : FetchOnlyBencherBase<EFCore.Bencher.EntityClasses.SalesOrderHeader>
     {
         private readonly PooledDbContextFactory<AWDataContext> pooledDbContextFactory;
+        private readonly bool enableThreadSafetyChecks;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityFrameworkCoreNoChangeTrackingBencher"/> class.
         /// </summary>
-        public EntityFrameworkCoreNoChangeTrackingBencher(string connectionString)
+        public EntityFrameworkCoreNoChangeTrackingBencher(string connectionString, bool enableThreadSafetyChecks = false)
             : base(e => e.SalesOrderId, usesChangeTracking: false, usesCaching: false)
         {
             var options = new DbContextOptionsBuilder<AWDataContext>()
                 .UseSqlServer(connectionString)
-                .EnableThreadSafetyChecks(false)
+                .EnableThreadSafetyChecks(enableThreadSafetyChecks)
                 .Options;
 
             pooledDbContextFactory = new PooledDbContextFactory<AWDataContext>(options);
+            this.enableThreadSafetyChecks = enableThreadSafetyChecks;
         }
 
 
@@ -62,7 +64,10 @@ namespace RawBencher.Benchers
         /// <returns>the framework name.</returns>
         protected override string CreateFrameworkNameImpl()
         {
-            return CreateFrameworkName("Entity Framework Core v{0} (v{1})", typeof(Microsoft.EntityFrameworkCore.DbContext));
+            if (enableThreadSafetyChecks)
+                return CreateFrameworkName("EFCore ANT v{0})", typeof(Microsoft.EntityFrameworkCore.DbContext));
+            else 
+                return CreateFrameworkName("EFCore ANT NTSC v{0})", typeof(Microsoft.EntityFrameworkCore.DbContext));
         }
     }
 }

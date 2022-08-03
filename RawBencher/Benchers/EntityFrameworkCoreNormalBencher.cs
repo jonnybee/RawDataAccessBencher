@@ -16,18 +16,19 @@ namespace RawBencher.Benchers
 	{
 		private readonly PooledDbContextFactory<AWDataContext> pooledDbContextFactory;
 		private readonly string connectionString;
+        private readonly bool enableThreadSafetyChecks;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="EntityFrameworkCoreNormalBencher"/> class.
-		/// </summary>
-		public EntityFrameworkCoreNormalBencher(string connectionString)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EntityFrameworkCoreNormalBencher"/> class.
+        /// </summary>
+        public EntityFrameworkCoreNormalBencher(string connectionString, bool enableThreadSafetyChecks = false)
 			: base(e => e.SalesOrderId, l=>l.CreditCardId, usesChangeTracking: true, usesCaching: false, supportsEagerLoading:true, supportsAsync:true, supportsInserts:true)
 		{
 			this.connectionString = connectionString;
-
-			var options = new DbContextOptionsBuilder<AWDataContext>()
+            this.enableThreadSafetyChecks = enableThreadSafetyChecks;
+            var options = new DbContextOptionsBuilder<AWDataContext>()
 				.UseSqlServer(connectionString)
-				.EnableThreadSafetyChecks(false)
+				.EnableThreadSafetyChecks(enableThreadSafetyChecks)
 				.Options;
 
 			pooledDbContextFactory = new PooledDbContextFactory<AWDataContext>(options);
@@ -205,7 +206,10 @@ namespace RawBencher.Benchers
 		/// <returns>the framework name.</returns>
 		protected override string CreateFrameworkNameImpl()
 		{
-			return CreateFrameworkName("Entity Framework Core v{0} (v{1})", typeof(Microsoft.EntityFrameworkCore.DbContext));
+			if (enableThreadSafetyChecks)
+				return CreateFrameworkName("EFCore v{0}", typeof(Microsoft.EntityFrameworkCore.DbContext));
+			else 
+				return CreateFrameworkName("EFCore NTSC v{0}", typeof(Microsoft.EntityFrameworkCore.DbContext));
 		}
 	}
 }
