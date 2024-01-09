@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--LLBLGen Pro v5.6 project file. Do not manually edit this file. Incorrect references could lead to an unloadable project file.-->
-<Project Version="5.6" TargetFrameworkName="Entity Framework Core v3" UseLegacyDefaults="false">
+<!--LLBLGen Pro v5.9 project file. Do not manually edit this file. Incorrect references could lead to an unloadable project file.-->
+<Project Version="5.9" TargetFrameworkName="Entity Framework Core v6" UseLegacyDefaults="false">
   <Properties>
     <Abbreviations />
     <Property Name="AdditionalTaskPerformerFolder" Value="" />
@@ -18,9 +18,13 @@
     <Property Name="AutoAssignTypeConverterToFieldMapping" Value="true" />
     <Property Name="AutomaticallyGenerateSourceCodeOnProjectSave" Value="false" />
     <Property Name="ConnectionStringKeyNamePattern" Value="EF.ConnectionString.{$ProviderName}" />
+    <Property Name="DefaultDDLSQLScriptDestinationFolder" Value=".\DDLSQLScripts" />
     <Property Name="DefaultDeleteRuleAction" Value="1" />
+    <Property Name="DefaultSourceCodeDestinationFolder" Value=".\Code" />
     <Property Name="DefaultUpdateRuleAction" Value="0" />
     <Property Name="DeleteObsoleteFiles" Value="true" />
+    <Property Name="ElementNamePrefixPattern" Value="{$SchemaName}" />
+    <Property Name="ElementNamePrefixPatternIsAppliedWhen" Value="1" />
     <Property Name="EncodingToUse" Value="0" />
     <Property Name="EntityActionCombinationDefaultForTable" Value="0" />
     <Property Name="EntityActionCombinationDefaultForView" Value="4" />
@@ -98,16 +102,16 @@
     <OutputType Value="3">
       <LastUsedPreferences>
         <DestinationRootFolder Value=".\" />
-        <FrameworkName Value="Entity Framework Core v3" />
+        <FrameworkName Value="Entity Framework Core v6" />
         <LanguageName Value="C#" />
-        <PlatformName Value=".NET Standard 2.1" />
-        <PresetName Value="SD.EntityFramework.Core v3 Netstandard" />
+        <PlatformName Value=".NET 6" />
+        <PresetName Value="SD.EntityFramework.Core v6" />
         <RootNamespace Value="EFCore.Bencher" />
         <TemplateGroup Value="General" />
         <TemplateBindings>
-          <Binding Name="SD.EntityFramework.Core.v3.SqlServer" />
-          <Binding Name="SD.EntityFramework.Core v3" />
-          <Binding Name="SD.EntityFramework.NETStandard21" />
+          <Binding Name="SD.EntityFramework.Core.v6.SqlServer" />
+          <Binding Name="SD.EntityFramework.Core v6" />
+          <Binding Name="SD.EntityFramework.NET6" />
           <Binding Name="SD.EntityFramework.Shared" />
           <Binding Name="SD.TemplateBindings.General" />
         </TemplateBindings>
@@ -121,10 +125,12 @@
       <SettingValue Name="1:EmitForeignKeyFields" Value="true" Type="3" />
       <SettingValue Name="1:EntityBaseClassNameDefault" Value="CommonEntityBase" Type="18" />
       <SettingValue Name="1:GenerateAsVirtualPropertyDefault" Value="true" Type="3" />
+      <SettingValue Name="1:GenerateDbContextOptionsCtorInDbContext" Value="true" Type="3" />
       <SettingValue Name="1:GenerateReadOnlyFieldsAsReadOnlyProperties" Value="false" Type="3" />
       <SettingValue Name="1:MapUnmappedFieldsAsShadowPropertiesDefault" Value="true" Type="3" />
       <SettingValue Name="1:ProviderManifestTokenValue" Value="2008" Type="18" />
       <SettingValue Name="1:SupportedActionCombinations" Value="0,4" Type="18" />
+      <SettingValue Name="1:SupportsKeyLessEntities" Value="true" Type="3" />
       <SettingValue Name="1:UsePrivateBackingFieldDefault" Value="false" Type="3" />
       <SettingValue Name="1:ValueTypeBaseClassNameDefault" Value="CommonValueTypeBase" Type="18" />
     </SettingValues>
@@ -5490,6 +5496,7 @@
       <Settings>
         <Property Name="DerivedElementClassNameSuffix" Value="Dto" />
         <Property Name="PrefixDenormalizedFieldsWithNavigatorName" Value="true" />
+        <Property Name="SyncDerivedElementNamesWithSourceElementNames" Value="false" />
       </Settings>
       <CodeGenerationCyclePreferences OutputType="3">
         <LastUsedPreferences>

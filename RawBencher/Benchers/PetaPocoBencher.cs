@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PetaPoco;
+﻿using System.Collections.Generic;
+using Microsoft.Data.SqlClient;
 
 namespace RawBencher.Benchers
 {
@@ -27,14 +23,14 @@ namespace RawBencher.Benchers
 		/// <returns>The fetched element, or null if not found</returns>
 		public override SalesOrderHeader FetchIndividual(int key)
 		{
-			SalesOrderHeader toReturn = null;
-			
-			var dbFactory = new PetaPoco.Database(ConnectionStringToUse, "System.Data.SqlClient");
-			dbFactory.OpenSharedConnection();
-			toReturn = dbFactory.First<SalesOrderHeader>(CommandText + " where SalesOrderId=@0", key);
-			dbFactory.CloseSharedConnection();
-			return toReturn;
-		}
+            using (var conn = new SqlConnection(ConnectionStringToUse))
+            {
+                conn.Open();
+                var dbFactory = new PetaPoco.Database(conn);
+                var toReturn = dbFactory.First<SalesOrderHeader>(CommandText + " where SalesOrderId=@0", key);
+                return toReturn;
+            }
+        }
 
 
 		/// <summary>
@@ -43,13 +39,14 @@ namespace RawBencher.Benchers
 		/// <returns>the set fetched</returns>
 		public override IEnumerable<SalesOrderHeader> FetchSet()
 		{
-			var headers = new List<SalesOrderHeader>();
-			var dbFactory = new PetaPoco.Database(ConnectionStringToUse, "System.Data.SqlClient");
-			dbFactory.OpenSharedConnection();
-			headers = dbFactory.Fetch<SalesOrderHeader>(CommandText);
-			dbFactory.CloseSharedConnection();
-			return headers;
-		}
+            using (var conn = new SqlConnection(ConnectionStringToUse))
+            {
+                conn.Open();
+                var dbFactory = new PetaPoco.Database(conn);
+                var headers = dbFactory.Fetch<SalesOrderHeader>(CommandText);
+                return headers;
+            }
+        }
 
 
 		/// <summary>
@@ -59,12 +56,12 @@ namespace RawBencher.Benchers
 		/// <returns>the framework name.</returns>
 		protected override string CreateFrameworkNameImpl()
 		{
-			return "PetaPoco v4.0.3";
+            return CreateFrameworkName("PetaPoco v{0} (v{1})", typeof(PetaPoco.Database));
 		}
 
 
 
-		#region Properties
+#region Properties
 		/// <summary>
 		/// Gets or sets the connection string to use
 		/// </summary>
@@ -73,7 +70,7 @@ namespace RawBencher.Benchers
 		/// Gets or sets the command text.
 		/// </summary>
 		public string CommandText { get; set; }
-		#endregion
+#endregion
 	}
 
 }

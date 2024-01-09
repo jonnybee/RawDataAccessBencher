@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RepoDb;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace RawBencher.Benchers
 {
@@ -26,7 +26,7 @@ namespace RawBencher.Benchers
         public override void Initialize()
         {
             base.Initialize();
-            SqlServerBootstrap.Initialize();
+            GlobalConfiguration.Setup().UseSqlServer();
         }
 
         /// <summary>
